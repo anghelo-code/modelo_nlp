@@ -27,10 +27,16 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "onnxruntime-react-native"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "668b388e-dbed-4f3a-b724-e05fe47419fb"
+      }
     }
   }
 }
