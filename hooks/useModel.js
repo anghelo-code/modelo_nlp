@@ -10,7 +10,7 @@ export function useModel(inputString) {
       try {
         setLoading(true);
         let jsonRes = { "texto": inputString }
-        console.log(`Clasificando el texto: ${jsonRes}`);
+        console.log(`Clasificando el texto: ${jsonRes["texto"]}`);
 
         // Hacer la solicitud a la API
         const response = await fetch('https://apimodelonlp.onrender.com/clasificar', {  // Cambia 'localhost' por tu IP si es necesario
@@ -25,10 +25,11 @@ export function useModel(inputString) {
         }
 
         const data = await response.json();
+
         // Procesar la respuesta
-        if (data.resultado && data.resultado.length > 0) {
-          setOutput(data.resultado[0] === "SI"); // True si es violento, False si no
-          console.log('data resuelta', data.resultado[0] === "SI");
+        if (data.resultado_0 && data.resultado_1) {
+          setOutput(data); // True si es violento, False si no
+          console.log('data resuelta', data);
         } else {
           setOutput(null); // O maneja el caso en que no se reciba un resultado válido
         }
