@@ -23,7 +23,7 @@ export default function HomeScreen() {
       headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Clasificador de Sentimientos</ThemedText>
+        <ThemedText type="title">Clasificador de Textos</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Ingrese el comentario</ThemedText>
@@ -44,10 +44,10 @@ export default function HomeScreen() {
 
       {!loading && (outputMo !== null) && (
         <ThemedView>
-          <ThemedText>Resultado: {outputMo ? "Es violento" : "No es violento"}</ThemedText>
+          <ThemedText>Resultado: {(outputMo.resultado_0 < outputMo.resultado_1) ? "Es violento" : "No es violento"}</ThemedText>
           <Collapsible title="Parámetros">
-            <ThemedText>Positivo: 25%</ThemedText>
-            <ThemedText>Negativo: 75%</ThemedText>
+            <ThemedText>Positivo:  {(outputMo.resultado_1 * 100).toFixed(2)}%</ThemedText>
+            <ThemedText>Negativo: {(outputMo.resultado_0 * 100).toFixed(2)}%</ThemedText>
           </Collapsible>
         </ThemedView>
       )}
